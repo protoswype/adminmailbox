@@ -14,3 +14,11 @@
 /log/*.log
 /tmp
 /nbproject/private/
+
+# Server Passwords
+/config/database.yml
+/config/database.yml~
+
+* Deployment passwords
+/config/deploy.rb
+
