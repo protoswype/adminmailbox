@@ -19,6 +19,6 @@
 /config/database.yml
 /config/database.yml~
 
-* Deployment passwords
+* Deployment
 /config/deploy.rb
-
+/config/deploy/*
