@@ -19,7 +19,7 @@ class MailboxesController < ApplicationController
   end
  
   def edit
-    @mailbox = Mailbox.find(params[:id])
+    @mailbox = Mailbox.find(params[:username])
   end
   
   def create
