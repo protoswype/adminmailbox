@@ -1,0 +1,15 @@
+<div id="new-button"><%= link_to "New Mailbox", new_mailbox_path %></div>
+
+<table>
+  <tr>
+    <th><%= t("labels.name") %></th>
+    <th id="action" colspan="1">Actions</th>
+  </tr>
+
+  <% @mailboxes.each do |mailbox| %>
+    <tr>
+      <td><%= mailbox.username %></td>
+      <td id="action"><%= link_to "Edit", edit_mailbox_path(mailbox) %></td>
+    </tr>
+  <% end %>
+</table>
