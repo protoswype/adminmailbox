@@ -15,5 +15,19 @@ class Mailbox < ActiveRecord::Base
   def hash_password
     self.password = Digest::MD5.hexdigest(self.password)
   end
-  
+    
+
+  def self.authenticate(username, password)
+    mailbox = find_by_username(username)
+    if username == ""
+      nil
+    else
+      if mailbox.password == Digest::MD5.hexdigest(password)
+        mailbox
+      else
+        nil
+      end    
+    end
+    
+  end
 end

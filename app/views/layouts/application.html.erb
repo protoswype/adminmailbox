@@ -5,26 +5,38 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>AdminMailbox: <%= controller.action_name %></title>
-    <%= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
   </head>
   <body>
-
-    <p style="color: green"><%= flash[:notice] %></p>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash#{name}" %>
+    <% end %>
     <hr size="1" color="#000000">
       <%= yield  %>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
       <hr size="1" color="#000000">
-<%# if admin? %>
-<%# "Logged as: " + session[:username] %> <br>
-<%# link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
-<%# else %>
-<%# "Not Logged in: " %> <br>
-<%# link_to "Login", new_session_path %>
-<%# end %>
-            <hr size="1" color="#000000">
-              <center>
-                [ <%= link_to "Mailboxes", :controller => 'mailboxes', :action => 'index' %> ] &nbsp
-Author: development@koriath-tech.de
-              </center>
-              <hr size="1" color="#000000">
-                </body>
-                </html>
+        <%
+        def current_user
+          @current_user ||= Mailbox.find(session[:username]) if session[:username]
+        end
+      %>
+        <% if current_user %>
+          Logged in as <%= current_user.username %>
+          <%= link_to "Log out", :controller => 'sessions', :action => 'destroy' %>
+        <% else %>
+          <%= link_to "Log in", :controller => 'sessions', :action => 'new' %>
+        <% end %>
+        <hr size="1" color="#000000">
+          <center>
+            [ <%= link_to "Mailboxes", :controller => 'mailboxes', :action => 'index' %> ] &nbsp
+            Author: development@koriath-tech.de
+          </center>
+          <hr size="1" color="#000000">
+            </body>
+            </html>
