@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-<p>
-  Edit Password from <b><%= @mailbox.username %></b>
-  Remember: You'll type this password in the box clear | without any *
-</p>
+  <p>
+    Edit Password from <b><%= @mailbox.username %></b><br/>
+    Remember: You'll type this password in the box clear | without any *
+  </p>
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.label :password, "Set new password" %><br />
+    <%= f.text_field :password, :value => "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

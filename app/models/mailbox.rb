@@ -11,6 +11,7 @@ class Mailbox < ActiveRecord::Base
   before_create :hash_password
   
   require 'digest/md5'
+  
   def hash_password
     self.password = Digest::MD5.hexdigest(self.password)
   end

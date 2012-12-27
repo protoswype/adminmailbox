@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Adminmailbox</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<%= yield %>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>AdminMailbox: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'scaffold' %>
+  </head>
+  <body>
 
-</body>
-</html>
+    <p style="color: green"><%= flash[:notice] %></p>
+    <hr size="1" color="#000000">
+      <%= yield  %>
+      <hr size="1" color="#000000">
+<%# if admin? %>
+<%# "Logged as: " + session[:username] %> <br>
+<%# link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
+<%# else %>
+<%# "Not Logged in: " %> <br>
+<%# link_to "Login", new_session_path %>
+<%# end %>
+            <hr size="1" color="#000000">
+              <center>
+                [ <%= link_to "Mailboxes", :controller => 'mailboxes', :action => 'index' %> ] &nbsp
+Author: development@koriath-tech.de
+              </center>
+              <hr size="1" color="#000000">
+                </body>
+                </html>
