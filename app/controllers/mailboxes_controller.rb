@@ -1,5 +1,7 @@
 class MailboxesController < ApplicationController
   
+  before_filter :authenticate_user
+  
   def index
     @mailbox = Mailbox.first
     #params[:search] ||= {}
